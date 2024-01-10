@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRESS_USERNAME: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRESS_DB: shop
+    volumes:
+      - ./:/docker-entrypoint-initdb.d/
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
